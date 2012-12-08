@@ -5,7 +5,7 @@ module Valle
       def inject(bound, column, klass)
         case column.type
         when :string
-          # add validator
+          klass.validates column.name, length: { maximum: bound.maximum }
         else
           raise "Unknown column type #{column.type}"
         end
