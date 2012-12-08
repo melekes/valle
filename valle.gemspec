@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "valle"
   gem.require_paths = ["lib"]
   gem.version       = Valle::VERSION
+
+  gem.add_dependency 'activerecord'
 end
