@@ -1,5 +1,6 @@
 require "valle/version"
+require 'active_record'
 
 module Valle
-  # Your code goes here...
+  autoload :BoundMapper, 'valle/bound_mapper'
 end
