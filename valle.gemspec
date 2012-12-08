@@ -16,4 +16,5 @@ Gem::Specification.new do |gem|
   gem.version       = Valle::VERSION
 
   gem.add_dependency 'activerecord'
+  gem.add_dependency 'activesupport'
 end
