@@ -13,8 +13,6 @@ module Valle
         case column.type
         when :string
           klass.validates column.name, length: { maximum: bound.maximum }
-        else
-          raise "Unknown column type #{column.type}"
         end
       end
     end
