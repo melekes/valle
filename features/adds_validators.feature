@@ -18,11 +18,7 @@ Feature: adds validators
   When I successfully run `bundle exec rake db:migrate --trace`
   And I write to "app/models/user.rb" with:
     """
-    require 'valle'
-
     class User < ActiveRecord::Base
-      include Valle::MacroMethods
-      valle [:name]
     end
     """
 
