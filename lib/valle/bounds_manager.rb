@@ -4,7 +4,7 @@ module Valle
     class << self
 
       ##
-      # Adds bounds to a given class
+      # Add validators for all columns of a given class
       #
       # 2 steps:
       #   1) get bound for the column
@@ -12,7 +12,7 @@ module Valle
       #
       # @param [ActiveRecord::Base] klass the AR model class
       #
-      def add_bounds(klass)
+      def add_validators(klass)
         mapper = BoundMapper.new
 
         columns = klass.columns
