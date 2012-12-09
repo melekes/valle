@@ -41,7 +41,7 @@ This means that, basically, you don't need to tweak it.
 However, you could tell him directly what models it should take into account by adding `config/initializers/valle.rb`:
 
     Valle.configure do |config|
-      config.models = ['User', 'Post']
+      config.models = %w(User, Post)
     end
 
 Also, you should be able to turn it off temporary by setting `enabled` option to `false`.
