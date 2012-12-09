@@ -58,3 +58,9 @@ Also, you should be able to turn it off temporary by setting `enabled` option to
 4  Run test suite (`rake test_suite`)
 5. Push to the branch (`git push origin my-new-feature`)
 6. Create new Pull Request
+
+## Core team
+
+- [Anton Kalyaev](http://github.com/akalyaev)
+- [Andrew Kulakov](http://github.com/Andrew8xx8)
+- [Alexander Kirillov](http://github.com/saratovsource)
