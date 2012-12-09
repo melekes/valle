@@ -64,3 +64,7 @@ Also, you should be able to turn it off temporary by setting `enabled` option to
 - [Anton Kalyaev](http://github.com/akalyaev)
 - [Andrew Kulakov](http://github.com/Andrew8xx8)
 - [Alexander Kirillov](http://github.com/saratovsource)
+
+## License
+
+Valle is released under the [MIT License](http://www.opensource.org/licenses/MIT).
