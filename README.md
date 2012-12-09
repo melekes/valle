@@ -59,7 +59,7 @@ Also, you should be able to turn it off temporary by setting `enabled` option to
 5. Push to the branch (`git push origin my-new-feature`)
 6. Create new Pull Request
 
-## Core team
+## Credits
 
 - [Anton Kalyaev](http://github.com/akalyaev)
 - [Andrew Kulakov](http://github.com/Andrew8xx8)
