@@ -1,4 +1,4 @@
-# Valle [![Build Status](https://secure.travis-ci.org/kaize/valle.png "Build Status")](http://travis-ci.org/kaize/valle)
+# Valle [![Build Status](https://secure.travis-ci.org/kaize/valle.png "Build Status")](http://travis-ci.org/kaize/valle)[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/kaize/valle)
 
 Valle adds validators to all the fields of your ActiveRecord models,
 so you should not think that string length or ID value exceeds the permissible limits.
