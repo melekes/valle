@@ -14,6 +14,6 @@ Cucumber::Rake::Task.new(:cucumber) do |t|
   t.cucumber_opts = ['--format', (ENV['CUCUMBER_FORMAT'] || 'progress')]
 end
 
-task default: :test
-
 task test_suite: [:test, :cucumber]
+
+task default: :test_suite
