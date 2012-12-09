@@ -1,8 +1,10 @@
-require 'valle/macro_methods'
+require 'valle/configuration'
 require 'active_record'
 
 module Valle
-  autoload :BoundAssigner, 'valle/bound_assigner'
+  extend Configuration
+
   autoload :BoundMapper, 'valle/bound_mapper'
+  autoload :BoundsManager, 'valle/bounds_manager'
   autoload :ValidationSetter, 'valle/validation_setter'
 end
