@@ -11,6 +11,8 @@ Feature: adds validators
       def self.up
         create_table :users do |t|
           t.string :name
+          t.text :bio
+          t.integer :age
         end
       end
     end
@@ -23,12 +25,14 @@ Feature: adds validators
     """
 
   @disable-bundler
-  Scenario: generate a rails 3 application and use factory definitions
+  Scenario: generate a rails 3 application and try out automatically injected validations
   When I write to "test/factories.rb" with:
     """
     FactoryGirl.define do
       factory :user do
         name "John"
+        bio "A nice write up about this guy"
+        age 22
       end
     end
     """
