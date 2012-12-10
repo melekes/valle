@@ -9,14 +9,14 @@ hands.
 
     validates :field_name, length: { maximum: 255 }
 
-Note: If you do not do this (and usually you are) and try to enter 2147483648 into the field with type: `interger` (see [Numeric types](http://www.postgresql.org/docs/9.2/static/datatype-numeric.html) section of PostgreSQL docs), you will get 500 error.
+Note: If you do not do this (and usually you are) and try to enter 2147483648 into the field with type: `integer` (see [Numeric types](http://www.postgresql.org/docs/9.2/static/datatype-numeric.html) section of PostgreSQL docs), you will get 500 error.
 
 Example:
 
     PG::Error: ERROR:  value "2147483648" is out of range for type integer
     : SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1
 
-There is a simular gem, called [validates_lengths_from_database](http://github.com/rubiety/validates_lengths_from_database). It solves only one part -
+There is a similar gem, called [validates_lengths_from_database](http://github.com/rubiety/validates_lengths_from_database). It solves only one part -
 applicable to strings. This gem is designed to work with all possible field types.
 
 ## Installation
