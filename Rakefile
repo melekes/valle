@@ -5,7 +5,7 @@ require 'cucumber/rake/task'
 
 Rake::TestTask.new do |t|
   t.libs << "test"
-  t.test_files = FileList['test/lib/*_test.rb']
+  t.test_files = FileList['test/lib/**/*_test.rb']
   t.verbose = true
 end
 
