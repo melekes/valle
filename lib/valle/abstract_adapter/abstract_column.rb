@@ -29,6 +29,20 @@ module Valle
       def respond_to_method_missing?(method_name, include_private = false)
         @original_column.respond_to?(method_name)
       end
+
+      ##
+      # Get maximum possible value/length for this column
+      #
+      def maximum
+        raise NotImplementedError.new("You must implement maximum method.")
+      end
+
+      ##
+      # Get minimum value/length for this column
+      #
+      def minimum
+        raise NotImplementedError.new("You must implement minimum method.")
+      end
     end
   end
 end
