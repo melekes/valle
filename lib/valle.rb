@@ -8,6 +8,11 @@ module Valle
   autoload :BoundsManager, 'valle/bounds_manager'
   autoload :ValidationSetter, 'valle/validation_setter'
 
+  # extensions
+  module AbstractAdapter
+    autoload :ColumnWrapper, 'valle/abstract_adapter/column_wrapper'
+  end
+
   # hooks
   autoload :Hooks, 'valle/hooks'
 end
