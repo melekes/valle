@@ -2,56 +2,54 @@ module Valle
   module AbstractAdapter
     class ColumnWrapper
 
-      ##
-      # Adds more functionality to the standard Adapter::Column
-      #
-      # @example
-      #   wrapped_column = AbstractAdapter::ColumnWrapper.wrap(column)
-      #
-      #   wrapped_column.limit_in_bytes?
-      #     => false
-      #
-      def initialize(column)
-        @column = column
-      end
-
-      ##
-      # Proxy all methods missing to original column
-      #
-      def method_missing(method_name, *arguments, &block)
-        @column.send(method_name, *arguments, &block)
-      end
-
-      def respond_to_method_missing?(method_name, include_private = false)
-        @column.respond_to?(method_name)
-      end
-
-      ##
-      # Determines whether the limit's method returned value is a count of bytes
-      #
-      # Limit is number of characters for :string and :text columns
-      # and number of bytes for :binary and :integer columns.
-      # @see http://apidock.com/rails/ActiveRecord/ConnectionAdapters/TableDefinition/column
-      #
-      def limit_in_bytes?
-        case type
-        when :binary; true
-        when :integer; true
-        else false
-        end
-      end
-
       class << self
 
         ##
         # Wraps original column
         #
-        # @param [AbstractAdapter::Column] column the original column
-        def wrap(column)
-          new(column)
+        # @param [ActiveRecord::ConnectionAdapters::Column] original_column the original column
+        #
+        def wrap(original_column)
+          case
+          when limit_in_bytes?(original_column)
+            ByteLimitedColumn.new(original_column)
+          when limit_in_characters?(original_column)
+            CharacterLimitedColumn.new(original_column)
+          else
+            UnlimitedColumn.new(original_column)
+          end
+        end
+
+        private
+
+        ##
+        # Determines whether the limit's method returned value is count of bytes
+        #
+        # Limit is number of bytes for :binary and :integer columns.
+        # @see http://apidock.com/rails/ActiveRecord/ConnectionAdapters/TableDefinition/column
+        #
+        def limit_in_bytes?(column)
+          case column.type
+          when :binary; true
+          when :integer; true
+          else false
+          end
+        end
+
+        ##
+        # Determines whether the limit's method returned value is count of characters
+        #
+        # Limit is number of characters for :string and :text columns
+        # @see http://apidock.com/rails/ActiveRecord/ConnectionAdapters/TableDefinition/column
+        #
+        def limit_in_characters?(column)
+          case column.type
+          when :string; true
+          when :text; true
+          else false
+          end
         end
       end
-
     end
   end
 end
