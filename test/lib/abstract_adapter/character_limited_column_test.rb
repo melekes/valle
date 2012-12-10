@@ -1,7 +1,7 @@
 require "test_helper"
 require "active_record"
 
-class BoundMapperTest < TestCase
+class CharacterLimitedColumnTest < TestCase
 
   def test_maximum_should_return_value_for_string_column
     original_column = ::ActiveRecord::ConnectionAdapters::Column.new("test_column", "", "string(255)")
