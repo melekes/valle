@@ -7,6 +7,7 @@ module Valle
       # Runs all the hooks, required for this gem
       #
       def init
+        return unless Valle.enabled?
         ActiveSupport.on_load(:active_record) do
           Valle::Hooks.extend_inherited_method
         end
@@ -20,7 +21,9 @@ module Valle
           class << self
             def inherited_with_valle_validators(subclass)
               inherited_without_valle_validators(subclass)
-              Valle::Hooks.extend_ar_validations_valid_method(subclass)
+              if Valle.can_process_model?(subclass.model_name)
+                Valle::Hooks.extend_ar_validations_valid_method(subclass)
+              end
             end
 
             alias_method_chain :inherited, :valle_validators
