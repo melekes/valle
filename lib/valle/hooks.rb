@@ -41,7 +41,7 @@ module Valle
 
         subclass.class_eval do
           def valid_with_valle_validators?(context = nil)
-            self.class.valle_validators ||= Valle::BoundsManager.add_validators(self.class)
+            self.class.valle_validators ||= Valle::Manager.add_validators(self.class)
             valid_without_valle_validators?(context)
           end
 

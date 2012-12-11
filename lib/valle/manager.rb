@@ -1,5 +1,5 @@
 module Valle
-  class BoundsManager
+  class Manager
 
     class << self
 

@@ -4,7 +4,7 @@ module Valle
   extend Configuration
 
   # core
-  autoload :BoundsManager, 'valle/bounds_manager'
+  autoload :Manager, 'valle/manager'
   autoload :ValidationSetter, 'valle/validation_setter'
 
   # extensions
