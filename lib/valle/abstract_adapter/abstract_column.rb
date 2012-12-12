@@ -19,14 +19,11 @@ module Valle
         @original_column = original_column
       end
 
-      ##
-      # Proxy all methods missing to original column
-      #
-      def method_missing(method_name, *arguments, &block)
+      def method_missing(method_name, *arguments, &block) # :nodoc:
         @original_column.send(method_name, *arguments, &block)
       end
 
-      def respond_to_method_missing?(method_name, include_private = false)
+      def respond_to_method_missing?(method_name, include_private = false) # :nodoc:
         @original_column.respond_to?(method_name, include_private)
       end
 
