@@ -1,6 +1,6 @@
 @disable-bundler
 Feature:
-  In order to temporary disable gem or apply it only to a subset of models,
+  In order to temporary disable Valle or apply it only to a subset of models,
   as a user of Rails, I would like to use valle initializer options.
 
   Background:
@@ -12,7 +12,7 @@ Feature:
     And I successfully run `bundle exec rails g model User name:string`
     And I successfully run `bundle exec rake db:migrate --trace`
 
-  Scenario: Setting enabled option to false disable valle gem
+  Scenario: Setting enabled option to false disable Valle
     When I write to "config/initializers/valle.rb" with:
       """
       Valle.configure do |config|
@@ -37,7 +37,7 @@ Feature:
     When I successfully run `bundle exec rake test --trace`
     Then the output should contain "1 tests, 1 assertions, 0 failures, 0 errors"
 
-  Scenario: Using the models option should limit the effect of the valle gem to the models specified in the list
+  Scenario: Using the models option should limit the effect of the Valle to the models specified in the list
     When I successfully run `bundle exec rails g model Post title:string`
     And I successfully run `bundle exec rake db:migrate --trace`
     And I write to "config/initializers/valle.rb" with:
