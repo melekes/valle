@@ -7,9 +7,8 @@ module Valle
       # Runs all the hooks, required for this gem
       #
       def init
-        return unless Valle.enabled?
         ActiveSupport.on_load(:active_record) do
-          Valle::Hooks.extend_inherited_method
+          Valle::Hooks.extend_inherited_method if Valle.enabled?
         end
       end
 
