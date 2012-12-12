@@ -27,7 +27,7 @@ module Valle
       end
 
       def respond_to_method_missing?(method_name, include_private = false)
-        @original_column.respond_to?(method_name)
+        @original_column.respond_to?(method_name, include_private)
       end
 
       ##
