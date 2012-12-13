@@ -1,3 +1,9 @@
+## 0.0.3 / 2012-12-13
+
+* added primary_key type [Anton Kalyaev]
+* added missing argument to respond_to? [Anton Kalyaev]
+* config is now working [Anton Kalyaev]
+
 ## 0.0.2 / 2012-12-11
 
 * fixed inherited behavior; switched to valid? method (Fixes #3) [Anton Kalyaev]
