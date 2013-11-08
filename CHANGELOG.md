@@ -1,3 +1,10 @@
+## 0.1.0 / 2013-11-08
+
+* fixed Stack too deep error [Anton Kalyaev]
+* fixed enabled option [Anton Kalyaev]
+* fixed db:migrate error [Anton Kalyaev]
+* dot not override AR#valid? method [Anton Kalyaev]
+
 ## 0.0.3 / 2012-12-13
 
 * added primary_key type [Anton Kalyaev]
