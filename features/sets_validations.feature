@@ -15,12 +15,15 @@ Feature: sets validations
       require 'test_helper'
 
       class UserTest < ActiveSupport::TestCase
-        test "should not save user when name is too long" do
-          user = FactoryGirl.create(:user)
-          user.name = 'a' * 256
+        setup do
+          @user = FactoryGirl.create(:user)
+        end
 
-          assert !user.save
-          assert_equal 1, user.errors.count
+        test "should not save user when name is too long" do
+          @user.name = 'a' * 256
+
+          assert !@user.save
+          assert_equal 1, @user.errors.count
         end
       end
       """
