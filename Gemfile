@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in valle.gemspec
 gemspec
 
-gem 'rails', '~> 3.2.0'
+gem 'rails', '~> 4.0.0'
 
 gem 'rake'
 gem 'minitest'

@@ -15,6 +15,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Valle::VERSION
 
-  gem.add_runtime_dependency 'activerecord'
-  gem.add_runtime_dependency 'activesupport'
+  gem.add_dependency 'activerecord', '>= 3.0'
+  gem.add_dependency 'activesupport'
 end
