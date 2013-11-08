@@ -17,6 +17,11 @@ Example:
     PG::Error: ERROR:  value "2147483648" is out of range for type integer
     : SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1
 
+### Supported Rails
+
+- 3.x
+- 4.x
+
 ### Supported ActiveRecord field types
 
 - `:primary_key`
