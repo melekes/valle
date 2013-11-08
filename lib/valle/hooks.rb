@@ -20,7 +20,9 @@ module Valle
           class << self
             def inherited_with_valle_validators(subclass)
               inherited_without_valle_validators(subclass)
-              if Valle.can_process_model?(subclass.model_name)
+              if (Valle.can_process_model?(subclass.model_name) &&
+                self == ActiveRecord::Base &&
+                subclass != ActiveRecord::SchemaMigration)
                 Valle::Hooks.extend_ar_validations_valid_method(subclass)
               end
             end
