@@ -43,8 +43,23 @@ module Valle
       options[:models].nil? ||
         options[:models].is_a?(Array) && options[:models].include?(model_name)
     end
+
+    ##
+    # Can we process this attribute
+    #
+    # If the user wants to skip some attributes, we need to check
+    # whether we should add validators to column or not.
+    #
+    # @param [String] model_name model name
+    # @param [String] attribute attribute name
+    # @see Valle::Configuration
+    #
+    def can_process_column?(model_name, attribute)
+      !options[:attributes].has_key?(model_name) ||
+        options[:attributes][model_name].is_a?(Array) && options[:attributes][model_name].include?(attribute)
+    end
   end
 end
 
-## if not using Railtie, call `Valle::Hooks.init` directly
+# if not using Railtie, call `Valle::Hooks.init` directly
 require 'valle/railtie' if defined? Rails

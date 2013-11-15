@@ -77,3 +77,30 @@ Feature:
       """
     When I successfully run `bundle exec rake test --trace`
     Then the output should contain "2 tests, 3 assertions, 0 failures, 0 errors"
+
+  Scenario: Using attributes option should allow us to skip some attributes
+    When I write to "config/initializers/valle.rb" with:
+      """
+      Valle.configure do |config|
+        config.attributes = {
+          'User' => %w(id)
+        }
+      end
+      """
+    And I write to "test/unit/user_test.rb" with:
+      """
+      require 'test_helper'
+
+      class UserTest < ActiveSupport::TestCase
+        test "should raise ActiveRecord::StatementInvalid error when name is too long" do
+          user = FactoryGirl.create(:user)
+          user.name = 'a' * 256
+
+          # SQLLite3 do not throw an ActiveRecord::StatementInvalid error
+          # so just check that record gets saved
+          assert user.save
+        end
+      end
+      """
+    When I successfully run `bundle exec rake test --trace`
+    Then the output should contain "1 tests, 1 assertions, 0 failures, 0 errors"

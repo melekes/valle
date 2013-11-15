@@ -60,6 +60,20 @@ Also, you should be able to turn it off temporary by setting `enabled` option to
       config.enabled = false
     end
 
+### Disabling gem for some attributes
+
+There are cases where you need to skip validation for a particular
+attribute (see [#4](https://github.com/kaize/valle/issues/4)). For
+example, CarrierWave stores his images temporarily in attributes, so calling
+`save` on them will fail because of LengthValidator (255 chars maximum).
+You can disable this gem for such fields using `attributes` option.
+
+    Valle.configure do |config|
+      config.attributes = {
+        'User' => %w(id name) # Model => Array of attributes to validate
+      }
+    end
+
 ## Alternatives
 
 There is a similar gem, called [validates_lengths_from_database](http://github.com/rubiety/validates_lengths_from_database). It solves only one part -

@@ -1,5 +1,5 @@
-# TODO [AK 09/12/12] maybe we should use ActiveSupport::Configurable ?
 require 'active_support/core_ext/module/attribute_accessors'
+require 'active_support/hash_with_indifferent_access'
 
 module Valle
   module Configuration
@@ -8,7 +8,8 @@ module Valle
 
     self.options = {
       enabled: true, # gem is enabled by default
-      models: nil # nil means to select all the AR models
+      models: nil, # selects all AR models by default
+      attributes: ActiveSupport::HashWithIndifferentAccess.new, # adds validators to all attributes by default
     }
 
     def configure
@@ -21,6 +22,10 @@ module Valle
 
     def models=(collection)
       self.options[:models] = collection
+    end
+
+    def attributes=(mapping)
+      self.options[:attributes] = mapping
     end
   end
 end
