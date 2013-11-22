@@ -1,23 +1,21 @@
 # Valle [![Build Status](https://secure.travis-ci.org/kaize/valle.png "Build Status")](http://travis-ci.org/kaize/valle) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/kaize/valle)
 
-Valle automatically sets minimum and maximum values for the fields of your
-ActiveRecord model(s), so you shouldn't worry, that string length or ID
-value will exceed the permissible DB limit for this type of field.
+Valle automatically creates validations for the minimum and maximum values of fields in your ActiveRecord model(s). No more worrying that string lengths or ID values will exceed the permissible DB limits!
 
-For example, maximum length of the string in PostgreSQL is 255. We will
-setup the following validator for you, so you don't need to write it by
-hands.
+For example, the maximum length of the `string` type in PostgreSQL is 255. Valle creates the following validator for you, so you no longer need to write it by hand:
 
-    validates :field_name, length: { maximum: 255 }
+```ruby
+validates :field_name, length: { maximum: 255 }
+```
 
-Note: If you do not do this (and usually you are) and try to enter 2147483648 into the field with type: `integer` (see [Numeric types](http://www.postgresql.org/docs/9.2/static/datatype-numeric.html) section of PostgreSQL docs), you will get 500 error.
+Note: If you do not do this (and usually you are) and try to enter 2147483648 into a field of type `integer` (see the [Numeric types](http://www.postgresql.org/docs/9.2/static/datatype-numeric.html) section of PostgreSQL docs), you will get a 500 error.
 
 Example:
 
     PG::Error: ERROR:  value "2147483648" is out of range for type integer
     : SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1
 
-### Supported Rails
+### Rails versions currently supported
 
 - 3.x
 - 4.x
@@ -39,45 +37,45 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Or install it yourself:
 
     $ gem install valle
 
 ## Usage
 
-By default, this gem adds validators to all your ActiveRecord models.
-This means that, basically, you don't need to tweak it.
+By default, this gem adds validators to all your ActiveRecord models. If that is the behavior you want, you don't need to tweak it.
 
-However, you could tell him directly what models it should take into account by adding `config/initializers/valle.rb`:
+However, you can specify what models to take into account by adding the file `config/initializers/valle.rb` containing:
 
-    Valle.configure do |config|
-      config.models = %w(User, Post)
-    end
+```ruby
+Valle.configure do |config|
+  config.models = %w(User, Post)
+end
+```
 
-Also, you should be able to turn it off temporary by setting `enabled` option to `false`.
+Also, you can disable it temporarily by setting the `enabled` configuration option to `false`.
 
-    Valle.configure do |config|
-      config.enabled = false
-    end
+```ruby
+Valle.configure do |config|
+  config.enabled = false
+end
+```
 
-### Disabling gem for some attributes
+### Disabling Valle on specific attributes
 
-There are cases where you need to skip validation for a particular
-attribute (see [#4](https://github.com/kaize/valle/issues/4)). For
-example, CarrierWave stores his images temporarily in attributes, so calling
-`save` on them will fail because of LengthValidator (255 chars maximum).
-You can disable this gem for such fields using `attributes` option.
+There are cases where you need to skip validation for a particular attribute (see [#4](https://github.com/kaize/valle/issues/4)). For example, *CarrierWave* stores images temporarily in attributes, so calling `save` on them will fail because of its LengthValidator (255 characters maximum). You can disable Valle for such fields using the `attributes` configuration option:
 
-    Valle.configure do |config|
-      config.attributes = {
-        'User' => %w(id name) # Model => Array of attributes to validate
-      }
-    end
+```ruby
+Valle.configure do |config|
+  config.attributes = {
+    'User' => %w(id name) # Model => Array of attributes to validate
+  }
+end
+```
 
 ## Alternatives
 
-There is a similar gem, called [validates_lengths_from_database](http://github.com/rubiety/validates_lengths_from_database). It solves only one part -
-applicable to strings. This gem is designed to work with all possible field types.
+There is a similar gem, called [validates_lengths_from_database](http://github.com/rubiety/validates_lengths_from_database). It solves only one part of the problem — applicable to strings. Valle, however, is designed to work with all possible field types.
 
 ## Contributing
 
