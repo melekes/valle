@@ -31,7 +31,6 @@ module Valle
         def limit_in_bytes?(column)
           case column.type
           when :primary_key; true
-          # when :binary; true
           when :integer; true
           else false
           end
