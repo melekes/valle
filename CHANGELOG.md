@@ -1,3 +1,8 @@
+## 0.2.1 / 2013-11-27
+
+* fixed uninitialized constant AR::SchemaMigration [Anton Kalyaev]
+* added limits for 6 byte integer [Anton Kalyaev]
+
 ## 0.2.0 / 2013-11-16
 
 * added attributes option [Anton Kalyaev]
