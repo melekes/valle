@@ -1,3 +1,7 @@
+## 0.2.2 / 2013-11-28
+
+* fix relation does not exist error (fixes #10) [qblake]
+
 ## 0.2.1 / 2013-11-27
 
 * fixed uninitialized constant AR::SchemaMigration [Anton Kalyaev]
