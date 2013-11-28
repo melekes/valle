@@ -20,26 +20,37 @@ module Valle
           class << self
             def inherited_with_valle_validators(subclass)
               inherited_without_valle_validators(subclass)
-              if (Valle.can_process_model?(subclass.model_name) &&
-                self == ActiveRecord::Base &&
-                (defined?(ActiveRecord::SchemaMigration) && subclass != ActiveRecord::SchemaMigration)) # skip AR::SchemaMigration (AR >= 4.X)
-                Valle::Hooks.extend_ar_validations_valid_method(subclass)
+              if Valle::Hooks.can_add_validators?(subclass, self)
+                Valle::Hooks.add_validators(subclass)
               end
             end
-
             alias_method_chain :inherited, :valle_validators
           end
         end
       end
 
       ##
-      # Extends the functionality of ActiveRecord::Validations valid? method
+      # Adds validators to subclass
       #
       # @param [ActiveRecord::Base] subclass the AR::Base child class
       # @note ActiveRecord::Validations should be defined at this point
       #
-      def extend_ar_validations_valid_method(subclass)
+      def add_validators(subclass)
         Valle::Manager.add_validators(subclass)
+      end
+
+      ##
+      # Check whenether we should add validators to subclass
+      #
+      # @param [ActiveRecord::Base] subclass the AR::Base child class
+      # @param [ActiveRecord::Base] inherited_from_class the AR::Base parent class
+      # @note ActiveRecord::Validations should be defined at this point
+      #
+      def can_add_validators?(subclass, inherited_from_class)
+        Valle.can_process_model?(subclass.model_name) &&
+        inherited_from_class == ActiveRecord::Base &&
+        subclass.table_exists? &&
+        (defined?(ActiveRecord::SchemaMigration) && subclass != ActiveRecord::SchemaMigration) # skip AR::SchemaMigration (AR >= 4.X)
       end
     end
   end
