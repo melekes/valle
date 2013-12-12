@@ -47,10 +47,12 @@ module Valle
       # @note ActiveRecord::Validations should be defined at this point
       #
       def can_add_validators?(subclass, inherited_from_class)
+        # skip AR::SchemaMigration (AR >= 4.X)
+        return false if (defined?(ActiveRecord::SchemaMigration) && subclass == ActiveRecord::SchemaMigration)
+
         Valle.can_process_model?(subclass.model_name) &&
         inherited_from_class == ActiveRecord::Base &&
-        subclass.table_exists? &&
-        (defined?(ActiveRecord::SchemaMigration) && subclass != ActiveRecord::SchemaMigration) # skip AR::SchemaMigration (AR >= 4.X)
+        subclass.table_exists?
       end
     end
   end
