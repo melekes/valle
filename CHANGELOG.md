@@ -1,3 +1,7 @@
+## 0.2.3 / 2013-12-16
+
+* fixes issue #12 with breaking rake db:migrate:reset [Marcus Geißler]
+
 ## 0.2.2 / 2013-11-28
 
 * fix relation does not exist error (fixes #10) [qblake]
