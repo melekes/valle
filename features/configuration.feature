@@ -37,13 +37,13 @@ Feature:
     When I successfully run `bundle exec rake test --trace`
     Then the output should contain "1 tests, 1 assertions, 0 failures, 0 errors"
 
-  Scenario: Using the models option should limit the effect of the Valle to the models specified in the list
+  Scenario: Using the exclude_models option should skip the models specified in the list
     When I successfully run `bundle exec rails g model Post title:string`
     And I successfully run `bundle exec rake db:migrate --trace`
     And I write to "config/initializers/valle.rb" with:
       """
       Valle.configure do |config|
-        config.models = %w(Post)
+        config.exclude_models = %w(User)
       end
       """
     And I write to "test/unit/user_test.rb" with:
@@ -78,12 +78,12 @@ Feature:
     When I successfully run `bundle exec rake test --trace`
     Then the output should contain "2 tests, 3 assertions, 0 failures, 0 errors"
 
-  Scenario: Using attributes option should allow us to skip some attributes
+  Scenario: Using exclude_attributes option should allow us to skip some attributes
     When I write to "config/initializers/valle.rb" with:
       """
       Valle.configure do |config|
-        config.attributes = {
-          'User' => %w(id)
+        config.exclude_attributes = {
+          'User' => %w(name)
         }
       end
       """

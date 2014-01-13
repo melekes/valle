@@ -1,5 +1,4 @@
 require 'active_support/core_ext/module/attribute_accessors'
-require 'active_support/hash_with_indifferent_access'
 
 module Valle
   module Configuration
@@ -8,8 +7,8 @@ module Valle
 
     self.options = {
       enabled: true, # gem is enabled by default
-      models: nil, # selects all AR models by default
-      attributes: ActiveSupport::HashWithIndifferentAccess.new, # adds validators to all attributes by default
+      exclude_models: nil, # selects all AR models by default
+      exclude_attributes: nil, # adds validators to all attributes by default
     }
 
     def configure
@@ -20,12 +19,12 @@ module Valle
       self.options[:enabled] = value
     end
 
-    def models=(collection)
-      self.options[:models] = collection
+    def exclude_models=(collection)
+      self.options[:exclude_models] = collection
     end
 
-    def attributes=(mapping)
-      self.options[:attributes] = mapping
+    def exclude_attributes=(mapping)
+      self.options[:exclude_attributes] = mapping
     end
   end
 end

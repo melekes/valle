@@ -33,30 +33,31 @@ module Valle
     ##
     # Can we process this model
     #
-    # If the user turned gem on only for certain models,
-    # we need to check whether the model is in the list.
+    # If the user wants to exclude some models,
+    # we need to check whether the model is on the list.
     #
     # @param [String] model_name the model name
     # @see Valle::Configuration
     #
     def can_process_model?(model_name)
-      options[:models].nil? ||
-        options[:models].is_a?(Array) && options[:models].include?(model_name)
+      options[:exclude_models].nil? ||
+        options[:exclude_models].is_a?(Array) && !options[:exclude_models].include?(model_name)
     end
 
     ##
     # Can we process this attribute
     #
     # If the user wants to skip some attributes, we need to check
-    # whether we should add validators to column or not.
+    # whether we should add validators to that column or not.
     #
     # @param [String] model_name model name
     # @param [String] attribute attribute name
     # @see Valle::Configuration
     #
     def can_process_column?(model_name, attribute)
-      !options[:attributes].has_key?(model_name) ||
-        options[:attributes][model_name].is_a?(Array) && options[:attributes][model_name].include?(attribute)
+      options[:exclude_attributes].nil? ||
+        !options[:exclude_attributes].has_key?(model_name) ||
+        options[:exclude_attributes][model_name].is_a?(Array) && !options[:exclude_attributes][model_name].include?(attribute)
     end
   end
 end

@@ -45,11 +45,11 @@ Or install it yourself:
 
 By default, this gem adds validators to all your ActiveRecord models. If that is the behavior you want, you don't need to tweak it.
 
-However, you can specify what models to take into account by adding the file `config/initializers/valle.rb` containing:
+However, you can skip some of them by adding the file `config/initializers/valle.rb` containing:
 
 ```ruby
 Valle.configure do |config|
-  config.models = %w(User, Post)
+  config.exclude_models = %w(Post)
 end
 ```
 
@@ -63,12 +63,12 @@ end
 
 ### Disabling Valle on specific attributes
 
-There are cases where you need to skip validation for a particular attribute (see [#4](https://github.com/kaize/valle/issues/4)). For example, *CarrierWave* stores images temporarily in attributes, so calling `save` on them will fail because of its LengthValidator (255 characters maximum). You can disable Valle for such fields using the `attributes` configuration option:
+There are cases where you need to skip validation for a particular attribute (see [#4](https://github.com/kaize/valle/issues/4)). For example, *CarrierWave* stores images temporarily in attributes, so calling `save` on them will fail because of its LengthValidator (255 characters maximum). You can disable Valle for such fields using the `exclude_attributes` configuration option:
 
 ```ruby
 Valle.configure do |config|
-  config.attributes = {
-    'User' => %w(id name) # Model => Array of attributes to validate
+  config.exclude_attributes = {
+    'User' => %w(image)
   }
 end
 ```
