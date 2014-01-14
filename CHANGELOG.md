@@ -1,3 +1,8 @@
+## 1.0.0 / 2014-01-14
+
+* attributes option changed to exclude_attributes [Anton Kalyaev]
+* models option changed to exclude_models [Anton Kalyaev]
+
 ## 0.2.3 / 2013-12-16
 
 * fixes issue #12 with breaking rake db:migrate:reset [Marcus Geißler]
