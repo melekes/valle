@@ -28,4 +28,4 @@ Feature: sets validations
       end
       """
     When I successfully run `bundle exec rake test --trace`
-    Then the output should contain "1 tests, 2 assertions, 0 failures, 0 errors"
+    Then the output should contain "1 runs, 2 assertions, 0 failures, 0 errors"

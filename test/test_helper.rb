@@ -3,7 +3,9 @@ Bundler.require
 
 require "active_record"
 
-MiniTest::Unit.autorun
+require 'minitest/autorun'
+require "minitest/reporters"
+Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(:color => true)]
 
-class TestCase < MiniTest::Unit::TestCase
+class TestCase < MiniTest::Test
 end

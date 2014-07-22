@@ -3,11 +3,13 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in valle.gemspec
 gemspec
 
-gem 'rails', '~> 4.0.0'
-
 gem 'rake'
-gem 'minitest'
-gem 'guard-minitest'
-gem 'turn'
-gem 'cucumber', '~> 1.0.0'
-gem 'aruba'
+
+group :test do
+  gem 'rails', '~> 4.1.0'
+
+  gem 'minitest', '~> 5'
+  gem 'minitest-reporters'
+  gem 'cucumber'
+  gem 'aruba'
+end

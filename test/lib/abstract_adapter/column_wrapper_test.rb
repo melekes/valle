@@ -4,7 +4,7 @@ require "active_record"
 class ColumnWrapperTest < TestCase
 
   def test_wrap_should_return_instance_of_character_limited_column_for_string_column
-    column = ::ActiveRecord::ConnectionAdapters::Column.new("test_column", "", "string")
+    column = ::ActiveRecord::ConnectionAdapters::Column.new("test_column", "", "varchar(255)")
     wrapped_column = Valle::AbstractAdapter::ColumnWrapper.wrap(column)
 
     assert wrapped_column.is_a?(Valle::AbstractAdapter::CharacterLimitedColumn)
