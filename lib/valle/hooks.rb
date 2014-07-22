@@ -50,9 +50,15 @@ module Valle
         # skip AR::SchemaMigration (AR >= 4.X)
         return false if (defined?(ActiveRecord::SchemaMigration) && subclass == ActiveRecord::SchemaMigration)
 
-        Valle.can_process_model?(subclass.model_name) &&
-        inherited_from_class == ActiveRecord::Base &&
-        subclass.table_exists?
+        begin
+          model_name = subclass.model_name
+
+          Valle.can_process_model?(model_name) &&
+            inherited_from_class == ActiveRecord::Base &&
+            subclass.table_exists?
+        rescue ArgumentError
+          false
+        end
       end
     end
   end
