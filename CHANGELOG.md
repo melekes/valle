@@ -1,3 +1,7 @@
+## 1.0.1 / 2014-07-22
+
+* fix has_and_belongs_to_many causes Model to crash on initialization (#18) [Anton Kalyaev]
+
 ## 1.0.0 / 2014-01-14
 
 * attributes option changed to exclude_attributes [Anton Kalyaev]
