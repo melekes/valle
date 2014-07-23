@@ -15,11 +15,6 @@ Example:
     PG::Error: ERROR:  value "2147483648" is out of range for type integer
     : SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1
 
-### Rails versions currently supported
-
-- 3.x
-- 4.x
-
 ### Supported ActiveRecord field types
 
 - `:primary_key`
@@ -40,6 +35,8 @@ And then execute:
 Or install it yourself:
 
     $ gem install valle
+
+If you are using other framework than Rails (e.g. Sinatra), call `Valle::Hooks.init` method during the boot process. 
 
 ## Usage
 
