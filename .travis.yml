@@ -16,7 +16,6 @@ matrix:
     - rvm: rbx-2
     - rvm: jruby-head
   fast_finish: true
-bundler_args: --without test
 branches:
   only:
     - master
