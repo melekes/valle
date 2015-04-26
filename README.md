@@ -102,13 +102,11 @@ $ make docker_test
 
 ## Credits
 
-Authors:
+Original authors:
 
 - [Anton Kalyaev](http://github.com/akalyaev)
 - [Andrew Kulakov](http://github.com/Andrew8xx8)
 - [Alexander Kirillov](http://github.com/saratovsource)
-
-Maintained by kaize team.
 
 Thank you to all our amazing [contributors](http://github.com/kaize/valle/contributors)!
 
