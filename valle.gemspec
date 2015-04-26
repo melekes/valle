@@ -1,5 +1,4 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/valle/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Anton Kalyaev"]
@@ -14,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "valle"
   gem.require_paths = ["lib"]
-  gem.version       = Valle::VERSION
+  gem.version       = "1.0.1"
 
   gem.add_dependency 'activerecord', '>= 3.0'
   gem.add_dependency 'activesupport'

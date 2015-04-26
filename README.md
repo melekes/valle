@@ -36,7 +36,7 @@ Or install it yourself:
 
     $ gem install valle
 
-If you are using other framework than Rails (e.g. Sinatra), call `Valle::Hooks.init` method during the boot process. 
+If you are using other framework than Rails (e.g. Sinatra), call `Valle::Hooks.init` method during the boot process.
 
 ## Usage
 
@@ -73,6 +73,23 @@ end
 ## Alternatives
 
 There is a similar gem, called [validates_lengths_from_database](http://github.com/rubiety/validates_lengths_from_database). It solves only one part of the problem — applicable to strings. Valle, however, is designed to work with all possible field types.
+
+## Docker container
+
+If you have [docker](http://www.docker.com/) installed on your machine, you can
+spin up a sandbox and run test suite in a few seconds:
+
+```
+$ docker build -t valle .
+$ docker run -it --rm -v "$PWD":/usr/src/lib valle bundle exec rake
+```
+
+Or simply use Makefile commands:
+
+```
+$ make docker_build
+$ make docker_test
+```
 
 ## Contributing
 
