@@ -6,7 +6,7 @@ Feature: sets validations
     And I add "valle" from this project as a dependency
     And I successfully run `bundle install`
     And I successfully run `bundle exec rails g model User name:string`
-    And I successfully run `bundle exec rake db:migrate --trace`
+    And I successfully run `bundle exec rake db:migrate -v`
 
   @disable-bundler
   Scenario: Using Valle automatically sets validations
@@ -27,5 +27,5 @@ Feature: sets validations
         end
       end
       """
-    When I successfully run `bundle exec rake test --trace`
+    When I successfully run `bundle exec rake test -v`
     Then the output should contain "1 runs, 2 assertions, 0 failures, 0 errors"
