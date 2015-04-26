@@ -1,8 +1,23 @@
 language: ruby
+sudo: false
+before_install:
+  - gem install bundler
+  - "rm ${BUNDLE_GEMFILE}.lock"
+before_script:
+  - bundle update
+cache: bundler
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.0
+  - 2.2.2
+  - ruby-head
+  - rbx-2
+  - jruby-head
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+    - rvm: rbx-2
+    - rvm: jruby-head
+  fast_finish: true
+bundler_args: --without test
 branches:
   only:
     - master
