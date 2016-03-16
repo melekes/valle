@@ -1,6 +1,6 @@
 module Valle
   class Railtie < ::Rails::Railtie #:nodoc:
-    config.after_initialize do
+    initializer do
       Valle::Hooks.init
     end
   end
