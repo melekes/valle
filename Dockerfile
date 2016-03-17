@@ -1,4 +1,4 @@
-FROM ruby:2.2.2
+FROM ruby:latest
 
 RUN mkdir -p /usr/src/lib
 WORKDIR /usr/src/lib
