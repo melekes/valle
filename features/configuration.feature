@@ -1,4 +1,3 @@
-@disable-bundler
 Feature:
   In order to temporary disable Valle or apply it only to a subset of models,
   as a user of Rails, I would like to use valle initializer options.

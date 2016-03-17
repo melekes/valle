@@ -1,15 +1,21 @@
-language: ruby
+sudo: false
+
 rvm:
   - 2.3.0
   - ruby-head
   - rbx-2
   - jruby-head
+
 matrix:
   allow_failures:
     - rvm: ruby-head
     - rvm: rbx-2
     - rvm: jruby-head
   fast_finish: true
+
 branches:
   only:
     - master
+
+before_install:
+  - gem update bundler
