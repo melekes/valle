@@ -2,6 +2,7 @@ require 'bundler/setup'
 Bundler.require
 
 require "active_record"
+require "active_support/core_ext/hash/keys"
 
 require 'minitest/autorun'
 require "minitest/reporters"
