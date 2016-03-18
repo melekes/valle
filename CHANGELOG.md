@@ -1,3 +1,7 @@
+## 1.1.0 / 2016-03-18
+
+* fixed #23: issue with config.chache_classes=true [a.nikishin]
+
 ## 1.0.1 / 2014-07-22
 
 * fix has_and_belongs_to_many causes Model to crash on initialization (#18) [Anton Kalyaev]
