@@ -1,4 +1,4 @@
-# Valle [![Build Status](https://secure.travis-ci.org/kaize/valle.png "Build Status")](http://travis-ci.org/kaize/valle) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/kaize/valle)
+# Valle [![Build Status](https://secure.travis-ci.org/kaize/valle.png "Build Status")](http://travis-ci.org/akalyaev/valle) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/akalyaev/valle) [![Gem Version](https://badge.fury.io/rb/valle.svg)](https://badge.fury.io/rb/valle)
 
 Valle automatically creates validations for the minimum and maximum values of fields in your ActiveRecord model(s). No more worrying that string lengths or ID values will exceed the permissible DB limits!
 
