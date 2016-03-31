@@ -1,3 +1,7 @@
+## 1.1.1 / 2016-03-31
+
+* fixed DEPRECATION WARNING: alias_method_chain is deprecated (#26) [Anton Kalyaev]
+
 ## 1.1.0 / 2016-03-18
 
 * fixed #23: issue with config.chache_classes=true [a.nikishin]
