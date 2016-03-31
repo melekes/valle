@@ -29,7 +29,7 @@ module Valle
       # Runs all the hooks, required for this gem
       #
       def run
-        ActiveRecord::Base.singleton_class.include(Valle::ActiveRecordExt)
+        ActiveRecord::Base.singleton_class.prepend(Valle::ActiveRecordExt)
       end
 
       ##
