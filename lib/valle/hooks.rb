@@ -1,4 +1,17 @@
 module Valle
+
+  ##
+  # Extends the ActiveRecord's inherited method
+  #
+  module ActiveRecordExt
+    def inherited(subclass)
+      super
+      if Valle::Hooks.can_add_validators?(subclass, self)
+        Valle::Hooks.add_validators(subclass)
+      end
+    end
+  end
+
   class Hooks
 
     class << self
@@ -8,25 +21,15 @@ module Valle
       #
       def init
         ActiveSupport.on_load(:active_record) do
-          Valle::Hooks.extend_inherited_method if Valle.enabled?
+          Valle::Hooks.run if Valle.enabled?
         end
       end
 
       ##
-      # Extends the functionality of inherited method
+      # Runs all the hooks, required for this gem
       #
-      def extend_inherited_method
-        ActiveRecord::Base.class_eval do
-          class << self
-            def inherited_with_valle_validators(subclass)
-              inherited_without_valle_validators(subclass)
-              if Valle::Hooks.can_add_validators?(subclass, self)
-                Valle::Hooks.add_validators(subclass)
-              end
-            end
-            alias_method_chain :inherited, :valle_validators
-          end
-        end
+      def run
+        ActiveRecord::Base.singleton_class.include(Valle::ActiveRecordExt)
       end
 
       ##
