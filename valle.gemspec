@@ -15,6 +15,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = "1.1.2"
 
-  gem.add_dependency 'activerecord', '>= 3.0'
+  gem.add_dependency 'activerecord', '>= 4.2'
   gem.add_dependency 'activesupport'
 end
