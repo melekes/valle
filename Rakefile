@@ -1,10 +1,13 @@
 #!/usr/bin/env rake
-require "bundler/gem_tasks"
+require 'rubygems'
+require 'bundler'
+require 'rake'
+require 'appraisal'
 require 'rake/testtask'
 require 'cucumber/rake/task'
 
 Rake::TestTask.new do |t|
-  t.libs << "test"
+  t.libs << 'test'
   t.test_files = FileList['test/lib/**/*_test.rb']
   t.verbose = true
 end
@@ -15,4 +18,8 @@ end
 
 task test_suite: [:test, :cucumber]
 
-task default: :test_suite
+if !ENV['APPRAISAL_INITIALIZED'] && !ENV['TRAVIS']
+  task :default => :appraisal
+else
+  task default: :test_suite
+end
