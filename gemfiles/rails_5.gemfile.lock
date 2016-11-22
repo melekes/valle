@@ -157,7 +157,7 @@ DEPENDENCIES
   cucumber (~> 2.4.0)
   minitest (~> 5)
   minitest-reporters
-  rails (= 5.0.0)
+  rails (~> 5.0.0)
   rake
   valle!
 
