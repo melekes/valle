@@ -17,7 +17,7 @@ gemfile:
   - gemfiles/rails_4.gemfile
   - gemfiles/rails_5.gemfile
 
-script: "bundle exec rake test"
+script: "bundle exec rake"
 
 branches:
   only:
