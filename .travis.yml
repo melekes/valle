@@ -13,6 +13,12 @@ matrix:
     - rvm: jruby-head
   fast_finish: true
 
+gemfile:
+  - gemfiles/rails_4.gemfile
+  - gemfiles/rails_5.gemfile
+
+script: "bundle exec rake test"
+
 branches:
   only:
     - master
