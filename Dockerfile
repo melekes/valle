@@ -9,5 +9,6 @@ WORKDIR /usr/src/lib
 COPY Gemfile* /usr/src/lib/
 COPY *.gemspec /usr/src/lib/
 RUN bundle install
+RUN appraisal install
 
 COPY . /usr/src/lib/
