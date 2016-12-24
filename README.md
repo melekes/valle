@@ -74,7 +74,9 @@ end
 
 There is a similar gem, called [validates_lengths_from_database](http://github.com/rubiety/validates_lengths_from_database). It solves only one part of the problem — applicable to strings. Valle, however, is designed to work with all possible field types.
 
-## Docker container
+## Developing
+
+### Docker container
 
 If you have [docker](http://www.docker.com/) installed on your machine, you can
 spin up a sandbox and run test suite in a few seconds:
@@ -90,6 +92,10 @@ Or simply use Makefile commands:
 $ make docker_build
 $ make docker_test
 ```
+
+### Debugging Cucumber tests
+
+Uncomment `@announce-output` tag at the top of the `.feature` file.
 
 ## Contributing
 
