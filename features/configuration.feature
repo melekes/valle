@@ -7,7 +7,7 @@ Feature:
     And I cd to "testapp"
     And I look for executables in "bin" within the current directory
     And I successfully run `bundle install`
-    And I successfully run `rails g model User name:string`
+    And I successfully run `rails g model User name:string{255}`
     And I successfully run `rake db:migrate`
 
   Scenario: Setting enabled option to false disable Valle
@@ -33,10 +33,10 @@ Feature:
       end
       """
     When I successfully run `rake test`
-    Then the output should contain "1 runs, 1 assertions, 0 failures, 0 errors"
+    Then the output should contain "1 runs, 1 assertions, 0 failures, 0 errors, 0 skips"
 
   Scenario: Using the exclude_models option should skip the models specified in the list
-    When I successfully run `rails g model Post title`
+    When I successfully run `rails g model Post title:string{255}`
     And I successfully run `rake db:migrate`
     And I write to "config/initializers/valle.rb" with:
       """
@@ -74,7 +74,7 @@ Feature:
       end
       """
     When I successfully run `rake test`
-    Then the output should contain "2 runs, 3 assertions, 0 failures, 0 errors"
+    Then the output should contain "2 runs, 3 assertions, 0 failures, 0 errors, 0 skips"
 
   Scenario: Using exclude_attributes option should allow us to skip some attributes
     When I write to "config/initializers/valle.rb" with:
@@ -101,4 +101,4 @@ Feature:
       end
       """
     When I successfully run `rake test`
-    Then the output should contain "1 runs, 1 assertions, 0 failures, 0 errors"
+    Then the output should contain "1 runs, 1 assertions, 0 failures, 0 errors, 0 skips"
