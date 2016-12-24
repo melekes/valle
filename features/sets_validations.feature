@@ -1,3 +1,4 @@
+# @announce-output
 Feature: sets validations
   Background:
     Given I successfully run `bundle exec rails new testapp --skip-bundle --skip-sprockets --skip-javascript`
