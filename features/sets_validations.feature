@@ -1,14 +1,13 @@
+# @announce-output
 Feature: sets validations
   Background:
     Given I successfully run `bundle exec rails new testapp --skip-bundle --skip-sprockets --skip-javascript`
     And I cd to "testapp"
-    And I add "factory_girl_rails" as a dependency
-    And I add "valle" from this project as a dependency
+    And I look for executables in "bin" within the current directory
     And I successfully run `bundle install`
-    And I successfully run `bundle exec rails g model User name:string`
-    And I successfully run `bundle exec rake db:migrate -v`
+    And I successfully run `rails g model User name:string{255}`
+    And I successfully run `rake db:migrate`
 
-  @disable-bundler
   Scenario: Using Valle automatically sets validations
     When I write to "test/unit/user_test.rb" with:
       """
@@ -27,5 +26,5 @@ Feature: sets validations
         end
       end
       """
-    When I successfully run `bundle exec rake test -v`
-    Then the output should contain "1 runs, 2 assertions, 0 failures, 0 errors"
+    When I successfully run `rake test`
+    Then the output should contain "1 runs, 2 assertions, 0 failures, 0 errors, 0 skips"
