@@ -2,7 +2,6 @@ module Valle
   module AbstractAdapter
     class AbstractColumn
 
-      ##
       # Adds more functionality to the standard ActiveRecord::ConnectionAdapters::Column
       #
       # @param [ActiveRecord::ConnectionAdapters::Column] original_column the original column

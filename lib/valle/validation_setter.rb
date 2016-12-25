@@ -2,13 +2,12 @@ module Valle
   class ValidationSetter
     class << self
 
-      ##
-      # Adds validator to the klass column depending on its type
+      # Adds validator to the model column depending on its type
       #
       # @param [AbstractAdapter::AbstractColumn] column the column
-      # @param [ActiveRecord::Base] klass the AR model class
+      # @param [ApplicationRecord] model
       #
-      def add_validator(column, klass)
+      def add_validator(column, model)
         options = {}
         options[:minimum] = column.minimum if column.minimum
         options[:maximum] = column.maximum if column.maximum
@@ -16,9 +15,9 @@ module Valle
 
         case column.type
         when :string, :text
-          klass.validates column.name, length: options
+          model.validates column.name, length: options
         when :integer
-          klass.validates column.name, numericality: options
+          model.validates column.name, numericality: options
         end
       end
     end

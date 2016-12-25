@@ -4,7 +4,6 @@ module Valle
 
       class << self
 
-        ##
         # Wraps original column
         #
         # @param [ActiveRecord::ConnectionAdapters::Column] original_column the original column
@@ -22,7 +21,6 @@ module Valle
 
         private
 
-        ##
         # Determines whether the limit's method returned value is count of bytes
         #
         # Limit is number of bytes for :binary and :integer columns.
@@ -36,7 +34,6 @@ module Valle
           end
         end
 
-        ##
         # Determines whether the limit's method returned value is count of characters
         #
         # Limit is number of characters for :string and :text columns
