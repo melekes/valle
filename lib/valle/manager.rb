@@ -3,18 +3,16 @@ module Valle
 
     class << self
 
-      ##
-      # Add validators for all columns of a given class
+      # Add validators for all columns of a given model
       #
-      # @param [ActiveRecord::Base] klass the AR model class
-      #
-      def add_validators(klass)
-        columns = klass.columns
+      # @param [ApplicationRecord] model
+      def add_validators(model)
+        columns = model.columns
         columns.each do |original_column|
-          next unless Valle.can_process_column?(klass.model_name.to_s, original_column.name)
+          next unless Valle.can_process_column?(model.model_name.to_s, original_column.name)
 
           column = AbstractAdapter::ColumnWrapper.wrap(original_column)
-          ValidationSetter.add_validator(column, klass)
+          ValidationSetter.add_validator(column, model)
         end
       end
 

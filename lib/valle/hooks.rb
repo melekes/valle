@@ -1,6 +1,5 @@
 module Valle
 
-  ##
   # Extends the ActiveRecord's inherited method
   #
   module ActiveRecordExt
@@ -16,7 +15,6 @@ module Valle
 
     class << self
 
-      ##
       # Runs all the hooks, required for this gem
       #
       def init
@@ -25,28 +23,25 @@ module Valle
         end
       end
 
-      ##
       # Runs all the hooks, required for this gem
       #
       def run
-        ActiveRecord::Base.singleton_class.prepend(Valle::ActiveRecordExt)
+        all_models_superclass.singleton_class.prepend(Valle::ActiveRecordExt)
       end
 
-      ##
       # Adds validators to subclass
       #
-      # @param [ActiveRecord::Base] subclass the AR::Base child class
+      # @param [ApplicationRecord] model
       # @note ActiveRecord::Validations should be defined at this point
       #
-      def add_validators(subclass)
-        Valle::Manager.add_validators(subclass)
+      def add_validators(model)
+        Valle::Manager.add_validators(model)
       end
 
-      ##
       # Check whenether we should add validators to subclass
       #
-      # @param [ActiveRecord::Base] subclass the AR::Base child class
-      # @param [ActiveRecord::Base] inherited_from_class the AR::Base parent class
+      # @param [ApplicationRecord] subclass of ApplicationRecord
+      # @param [ApplicationRecord] inherited_from_class the AR::Base parent class
       # @note ActiveRecord::Validations should be defined at this point
       #
       def can_add_validators?(subclass, inherited_from_class)
@@ -57,12 +52,20 @@ module Valle
           model_name = subclass.model_name
 
           Valle.can_process_model?(model_name) &&
-            inherited_from_class == ActiveRecord::Base &&
+            inherited_from_class == all_models_superclass &&
             subclass.table_exists?
         rescue ArgumentError
           false
         end
       end
+
+      private
+
+      # starting from ActiveRecord 5, all models will inherit from ApplicationRecord
+      def all_models_superclass
+        ActiveRecord::VERSION::MAJOR >= 5 ? ApplicationRecord : ActiveRecord::Base
+      end
+
     end
   end
 end
