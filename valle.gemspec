@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "valle"
   gem.require_paths = ["lib"]
-  gem.version       = "1.1.2"
+  gem.version       = "1.1.3"
 
   gem.add_dependency 'activerecord', '>= 4.2'
   gem.add_dependency 'activesupport'
