@@ -1,3 +1,8 @@
+## 1.1.3 / 2016-12-25
+
+* fixed #30: Cucumber tests are failing
+* fixed #31: Automatic table names are broken in Rails 5
+
 ## 1.1.1 / 2016-03-31
 
 * fixed DEPRECATION WARNING: alias_method_chain is deprecated (#26) [Anton Kalyaev]
