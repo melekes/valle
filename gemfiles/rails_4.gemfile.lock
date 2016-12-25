@@ -1,7 +1,7 @@
 PATH
   remote: ../
   specs:
-    valle (1.1.2)
+    valle (1.1.3)
       activerecord (>= 4.2)
       activesupport
 
