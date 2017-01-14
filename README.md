@@ -1,4 +1,4 @@
-# Valle [![Build Status](https://travis-ci.org/akalyaev/valle.svg?branch=master)](https://travis-ci.org/akalyaev/valle) [![Code Climate](https://codeclimate.com/github/akalyaev/valle/badges/gpa.svg)](https://codeclimate.com/github/akalyaev/valle) [![Gem Version](https://badge.fury.io/rb/valle.svg)](https://badge.fury.io/rb/valle)
+# Valle [![Build Status](https://travis-ci.org/melekes/valle.svg?branch=master)](https://travis-ci.org/melekes/valle) [![Code Climate](https://codeclimate.com/github/melekes/valle/badges/gpa.svg)](https://codeclimate.com/github/melekes/valle) [![Gem Version](https://badge.fury.io/rb/valle.svg)](https://badge.fury.io/rb/valle)
 
 Valle automatically creates validations for the minimum and maximum values of fields in your ActiveRecord model(s). No more worrying that string lengths or ID values will exceed the permissible DB limits!
 
@@ -110,7 +110,7 @@ Uncomment `@announce-output` tag at the top of the `.feature` file.
 
 Original authors:
 
-- [Anton Kalyaev](http://github.com/akalyaev)
+- [Anton Kalyaev](http://github.com/melekes)
 - [Andrew Kulakov](http://github.com/Andrew8xx8)
 - [Alexander Kirillov](http://github.com/saratovsource)
 
